@@ -30,8 +30,7 @@ Every skill in this repository satisfies all of the following:
 - A README entry, updated in the same commit as the skill itself: one row in the
   `## Skills` table and one catalog section carrying its install prompt. The repository
   URL is defined only in the README Quick Install section; every other surface derives
-  its prompt from there, and Codex's `$skill-installer` variant lives in that section
-  alone.
+  its prompt from there. Install prompts stay harness-agnostic.
 
 ## Writing rules
 
