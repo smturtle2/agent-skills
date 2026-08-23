@@ -36,8 +36,15 @@ Install skills/<skill-name> from https://github.com/smturtle2/agent-skills into 
 ```
 
 <!--
-Catalog template. When adding a skill, append a section here following this shape and add
-its row to the Skills table above:
+Catalog entry shape for every future skill. Adding a skill means doing all three in the
+same change: append its row here, append its catalog section below, and include its own
+install prompt in that section.
+
+Skills table row:
+
+| [`<skill-name>`](#<skill-name>) | <best for> | <output> | [Prompt](#<skill-name>) |
+
+Catalog section:
 
 ### `<skill-name>`
 
