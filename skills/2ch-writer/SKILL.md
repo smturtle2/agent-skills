@@ -144,30 +144,21 @@ planned (continuations).
 
 ## Examples
 
-**Input:**
+**Input:** whatever the request supplies — for instance one article URL plus an
+inferred genre.
 
-> Turn this into a thread story: scientists repeated fusion ignition three times this
-> year with growing net energy yield. Science flavor.
-
-**Output:** `fusion-thread.html` — complete light-theme thread page. Excerpt (full run
-continues to the landing):
+**Output:** one HTML file whose every post instantiates the slot shape owned by
+[assets/viewer.html](assets/viewer.html):
 
 ```html
 <article class="post">
-<p class="meta">1 ：<span class="name"></span>：2026/08/21(Fri) 23:41:07 ID:kTz2qWx8</p>
-<div class="body">guys. the lab two towns over says they got more energy out than they
-put in. actual net gain. my cousin does security there and he says the parking lot was
-full at 3am</div>
-</article>
-<article class="post">
-<p class="meta">14 ：<span class="name">Dr_Plasma</span>：2026/08/21(Fri) 23:58:33 ID:pL9mQ4vR</p>
-<div class="body">&gt;&gt;9 nobody "believes" your cousin, we believe the numbers. if Q&gt;1
-held past a nanosecond i'll eat my thesis</div>
+<p class="meta">{{N}} ：<span class="name">{{NAME}}</span>：{{STAMP}}</p>
+<div class="body">{{BODY}}</div>
 </article>
 ```
 
-Note how the science cast invents its own expert voice (`Dr_Plasma`) via the leader
-formula instead of borrowing 「悪魔情報」— genre freedom in action.
+The placeholders are the template's own tokens (output shape is the fixed constant;
+story content always comes from the material at hand).
 
 ## References
 
