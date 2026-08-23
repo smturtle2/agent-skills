@@ -1,5 +1,7 @@
 # agent-skills
 
+English | [한국어](README.ko.md)
+
 A personal repository of [Agent Skills](https://agentskills.io) — reusable instruction
 packages (`SKILL.md` folders) that coding agents discover and load on demand.
 
