@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+  body {
+    margin: 0;
+    background: #fff;
+    color: #111;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.6;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 1.25rem; border-bottom: 1px solid #ddd; padding-bottom: 8px; }
+  .post { border-bottom: 1px solid #eee; padding: 8px 0; }
+  .meta { color: #666; font-size: 0.85rem; margin: 0; }
+  .name { font-weight: 600; color: #111; }
+  .body { white-space: pre-wrap; margin: 4px 0 0; }
+</style>
+</head>
+<body>
+<main>
+<h1>{{TITLE}}</h1>
+{{POSTS}}
+</main>
+</body>
+</html>
+
+<!--
+Fill guide:
+- {{LANG}}  : language code of the requester's language (e.g. ko, en, ja).
+- {{TITLE}} : thread title, same string as <title> above.
+- {{POSTS}} : one block per post, in order:
+
+<article class="post">
+<p class="meta">{{N}} ：<span class="name">{{NAME}}</span>：{{STAMP}}</p>
+<div class="body">{{BODY}}</div>
+</article>
+
+  {{N}}     sequential number starting at 1
+  {{NAME}}  name field text (empty string for anonymous posters)
+  {{STAMP}} timestamp + ID line, e.g. 2026/08/21(Fri) 23:41:07 ID:kTz2qWx8
+  {{BODY}}  post text with HTML special chars escaped
+
+Keep the styling rules above unchanged: white background, dark text.
+-->

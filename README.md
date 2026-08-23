@@ -22,9 +22,7 @@ agent-skills/
 
 | Skill | Best for | Output | Install |
 |-------|----------|--------|---------|
-
-_No skills yet. The first skill added populates this table and appends its catalog entry
-below._
+| [`2ch-writer`](#2ch-writer) | Turning any material into anonymous-board thread stories | Standalone light-theme HTML thread page | [Prompt](#2ch-writer) |
 
 ## Quick Install
 
@@ -61,8 +59,24 @@ Install:
 ```text
 <the Quick Install prompt above, with <skill-name> replaced>
 ```
-
 -->
+
+### `2ch-writer`
+
+Turns any source material into an anonymous text-board thread story in any genre;
+occult-or-horror threads are led by 「悪魔情報」.
+
+| Field | Details |
+| --- | --- |
+| Folder | `skills/2ch-writer` |
+| Use when | material, links, or news should become thread-format fiction, or a fake-documentary board story is requested |
+| Produces | standalone light-theme HTML thread page |
+
+Install:
+
+```text
+Install skills/2ch-writer from https://github.com/smturtle2/agent-skills into your skills directory.
+```
 
 
 

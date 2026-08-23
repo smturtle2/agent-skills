@@ -1,0 +1,40 @@
+{
+  "evals": [
+    {
+      "id": "horror-leader",
+      "prompt": "다음 자료로 괴담 스레드 만들어줘. 자료: 한 달째 매일 새벽 3시 33분에 현관 벨이 울리는데, 카메라에는 아무도 찍히지 않는다.",
+      "expected_behaviors": [
+        "Delivers a standalone HTML file built from assets/viewer.html with white-background light styling.",
+        "Posts number sequentially from 1, post 1 opens the report, and every anchor points to an existing post.",
+        "「悪魔情報」 appears in fixed kanji as the story leader: late entrance greeted by regulars, drives the investigation, shakes the thread once with a conspiracy tangent.",
+        "Named voices keep consistent speech quirks; anonymous posters carry no demographic descriptors."
+      ]
+    },
+    {
+      "id": "science-no-devil",
+      "prompt": "Turn this into a thread story: scientists repeated fusion ignition three times this year with growing net energy yield, latest shot doubled the gain.",
+      "expected_behaviors": [
+        "Completes a full arc using freshly invented recurring characters built on the leader formula (specialty + drive + one flaw).",
+        "Article facts keep their original claims; dramatization attaches around them.",
+        "Output renders through the light-theme template with gapless numbering."
+      ]
+    },
+    {
+      "id": "length-mapping",
+      "prompt": "어젯밤 옥상에서 하얀 인형 같은 사람이 웃고 있었다는 글이 실시간 검색에 올랐다는 설정으로, 1시간 이상 분량의 스레드 만들어줘.",
+      "expected_behaviors": [
+        "Applies the time-expression mapping: targets 1000+ posts and states a staged continuation plan when one response cannot hold the scale.",
+        "Keeps occult/horror casting intact across the plan, including 「悪魔情報」 leadership."
+      ]
+    },
+    {
+      "id": "length-unspecified",
+      "prompt": "Use this cooking-fail blog post as material for a thread story. Post: tried mirror-glaze cake at 2am, glaze slid off onto the cat, smoke alarm agreed with the cat.",
+      "expected_behaviors": [
+        "Proceeds straight to production without asking about length; sizes the thread to the material's arc.",
+        "Infers comedic slice-of-life genre from tone and notes the inference at delivery.",
+        "A short single-scene thread counts as valid output here."
+      ]
+    }
+  ]
+}
