@@ -29,7 +29,9 @@ Every skill in this repository satisfies all of the following:
   gap this skill closes relative to a no-skill run.
 - A README entry, updated in the same commit as the skill itself: one row in the
   `## Skills` table and one catalog section carrying the skill's install prompt
-  (`Use $skill-installer to install skills/<name> from https://github.com/smturtle2/agent-skills.`).
+  (`Install skills/<name> from https://github.com/smturtle2/agent-skills into your
+  skills directory.`). The prompt stays harness-agnostic; Codex's `$skill-installer`
+  phrasing appears once in the Quick Install section, per harness, in the README only.
 
 ## Writing rules
 

@@ -28,17 +28,17 @@ below._
 
 ## Quick Install
 
-Codex, using the preinstalled system skill:
+Any Agent-Skills-compatible harness (Claude Code, Codex, OpenCode, Gemini CLI, Cursor)
+accepts this prompt:
+
+```text
+Install skills/<skill-name> from https://github.com/smturtle2/agent-skills into your skills directory.
+```
+
+In Codex the same install through the preinstalled system skill reads:
 
 ```text
 Use $skill-installer to install skills/<skill-name> from https://github.com/smturtle2/agent-skills.
-```
-
-Other harnesses (Claude Code, OpenCode, Gemini CLI, Cursor) accept the same request
-without the installer prefix:
-
-```text
-Install skills/<skill-name> from https://github.com/smturtle2/agent-skills into your project skills directory.
 ```
 
 CLI alternative: `npx skills add smturtle2/agent-skills -s <skill-name>` or
@@ -62,10 +62,11 @@ its row to the Skills table above:
 Install:
 
 ```text
-Use $skill-installer to install skills/<skill-name> from https://github.com/smturtle2/agent-skills.
+Install skills/<skill-name> from https://github.com/smturtle2/agent-skills into your skills directory.
 ```
 
 -->
+
 
 
 
