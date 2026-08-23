@@ -28,10 +28,10 @@ Every skill in this repository satisfies all of the following:
 - An `evals/evals.json` with 3+ prompts and expected behaviors, sized to demonstrate the
   gap this skill closes relative to a no-skill run.
 - A README entry, updated in the same commit as the skill itself: one row in the
-  `## Skills` table and one catalog section carrying the skill's install prompt
-  (`Install skills/<name> from https://github.com/smturtle2/agent-skills into your
-  skills directory.`). The prompt stays harness-agnostic; Codex's `$skill-installer`
-  phrasing appears once in the Quick Install section, per harness, in the README only.
+  `## Skills` table and one catalog section carrying its install prompt. The repository
+  URL is defined only in the README Quick Install section; every other surface derives
+  its prompt from there, and Codex's `$skill-installer` variant lives in that section
+  alone.
 
 ## Writing rules
 

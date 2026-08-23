@@ -62,7 +62,7 @@ its row to the Skills table above:
 Install:
 
 ```text
-Install skills/<skill-name> from https://github.com/smturtle2/agent-skills into your skills directory.
+<the Quick Install prompt above, with <skill-name> replaced>
 ```
 
 -->
