@@ -23,6 +23,7 @@ agent-skills/
 | Skill | Best for | Output | Install |
 |-------|----------|--------|---------|
 | [`2ch-writer`](#2ch-writer) | Turning any material into anonymous-board thread stories | Standalone light-theme HTML thread page | [Prompt](#2ch-writer) |
+| [`reading-writer`](#reading-writer) | Converting any material into TTS-ready listening scripts | Plain-text narration script (`.txt`) | [Prompt](#reading-writer) |
 
 ## Quick Install
 
@@ -78,7 +79,22 @@ Install:
 Install skills/2ch-writer from https://github.com/smturtle2/agent-skills into your skills directory.
 ```
 
+### `reading-writer`
 
+Converts any material — documents, articles, transcripts, web pages — into
+TTS-friendly plain text with spoken-form normalization and uniform pauses.
+
+| Field | Details |
+| --- | --- |
+| Folder | `skills/reading-writer` |
+| Use when | content is being prepared for listening or a text-to-speech engine |
+| Produces | plain-text narration script (`.txt`) |
+
+Install:
+
+```text
+Install skills/reading-writer from https://github.com/smturtle2/agent-skills into your skills directory.
+```
 
 
 ## Create a skill

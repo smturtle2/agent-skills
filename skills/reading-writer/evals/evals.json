@@ -1,0 +1,48 @@
+{
+  "evals": [
+    {
+      "id": "article-elements",
+      "prompt": "Convert this for listening: '## Trial Results — The therapy reached 87% efficacy across sites. Raw data at https://trial.example.org/data. Three hospitals joined the pilot.'",
+      "expected_behaviors": [
+        "Output is a .txt narration script with heading as a padded signpost line.",
+        "Numbers render in spoken form and the URL reduces to its domain in spoken form.",
+        "Every sentence-final punctuation mark is followed by exactly two newlines, uniformly."
+      ]
+    },
+    {
+      "id": "transcript-labels",
+      "prompt": "이 인터뷰 전사를 읽기용으로 바꿔줘. 김기자: 안녕하세요. 김기자: 첫 질문 드리겠습니다. 박대표: 네, 그렇습니다. 박대표: 올해 매출은 두 배가 됐습니다. 김기자: 축하드립니다.",
+      "expected_behaviors": [
+        "Speaker labels appear only where the speaker changes; consecutive same-speaker lines merge under one label.",
+        "Korean content stays Korean; pause format (terminal punctuation plus two newlines) holds throughout."
+      ]
+    },
+    {
+      "id": "tables-and-citations",
+      "prompt": "Make this TTS-ready: a report whose section contains an 8-row comparison table and three footnotes citing page numbers, plus one footnote telling an anecdote about the lab.",
+      "expected_behaviors": [
+        "The table becomes a 1–2 sentence takeaway naming up to two key figures.",
+        "The anecdote footnote weaves into the flow after its anchor sentence; the bare citations collapse into one closing source pointer.",
+        "Source order of all surviving units matches the original document."
+      ]
+    },
+    {
+      "id": "fiction-dialogue",
+      "prompt": "Prepare this scene for TTS: \"Mara set the key down. 'You came back,' she said. 'Twice now.' 'I keep my promises,' Dov replied. The kettle screamed.\"",
+      "expected_behaviors": [
+        "Prose wording survives verbatim; dialogue paragraphs separate at speaker changes.",
+        "Terminal punctuation pairs with two newlines throughout; no speaker labels get invented for fiction voices unless the source names them structurally.",
+        "No markdown or quotation artifacts remain that a voice engine would read aloud."
+      ]
+    },
+    {
+      "id": "single-narrator",
+      "prompt": "Convert my essay draft (pasted, 6 paragraphs, no dialogue) into a listening script.",
+      "expected_behaviors": [
+        "Script flows without any speaker labels — the voice pass skips labeling for single-narrator text.",
+        "Paragraph order and wording match the source; long paragraphs split only at sentence boundaries.",
+        "Uniform pause format applies from first line to last."
+      ]
+    }
+  ]
+}
