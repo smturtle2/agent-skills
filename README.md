@@ -35,10 +35,6 @@ Cursor) accepts this prompt:
 Install skills/<skill-name> from https://github.com/smturtle2/agent-skills into your skills directory.
 ```
 
-CLI alternative: `npx skills add smturtle2/agent-skills -s <skill-name>` or
-`gh skill install smturtle2/agent-skills <skill-name>` — path matrix in
-`docs/02-harnesses.md`.
-
 <!--
 Catalog template. When adding a skill, append a section here following this shape and add
 its row to the Skills table above:
