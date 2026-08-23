@@ -90,34 +90,26 @@ them only when the requester overrides.
 
 ## Examples
 
-**Input:**
+**Input:** any unit sequence — heading, prose, list, link, exchange.
 
-```markdown
-## Results
-The trial reached 87% efficacy. Raw data: https://trial.example.org/data
-- 12 hospitals participated
-- follow-up lasted 18 months
-```
-
-**Output (excerpt, English request):**
+**Output spacing shape** (wording passes through the element table untouched; only the
+layout changes):
 
 ```text
-Results.
+<heading line>
 
 
-The trial reached eighty-seven percent efficacy. Raw data lives at trial.example dot
-org.
+<prose sentence.>
 
 
-First: twelve hospitals participated.
+First: <list item>.
 
-Second: follow-up lasted eighteen months.
-
+Second: <list item>.
 
 ```
 
-Two newlines follow every terminal mark, the heading is padded, the URL reduced to its
-domain, and the list enumerated — same content, listenable shape.
+Every terminal mark carries exactly two newlines and headings sit inside blank-line
+padding — the spacing is the skill's one fixed constant; wording stays the source's.
 
 ## References
 
