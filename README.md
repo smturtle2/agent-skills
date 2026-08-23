@@ -18,20 +18,56 @@ agent-skills/
 └── template/        # Copy this scaffold when creating a new skill
 ```
 
-## Install a skill
+## Skills
 
-```bash
-# Via the community CLI (73+ agents supported)
-npx skills add smturtle2/agent-skills -s <skill-name>
+| Skill | Best for | Output | Install |
+|-------|----------|--------|---------|
 
-# Via GitHub CLI
-gh skill install smturtle2/agent-skills <skill-name>
+_No skills yet. The first skill added populates this table and appends its catalog entry
+below._
+
+## Quick Install
+
+Codex, using the preinstalled system skill:
+
+```text
+Use $skill-installer to install skills/<skill-name> from https://github.com/smturtle2/agent-skills.
 ```
 
-Both tools discover skills under the standard `skills/<name>/SKILL.md` convention.
-For local development, agents pick the folder up directly from `.claude/skills/`,
-`.agents/skills/`, or `.opencode/skills/` — see `docs/02-harnesses.md` for the full path
-matrix.
+Other harnesses (Claude Code, OpenCode, Gemini CLI, Cursor) accept the same request
+without the installer prefix:
+
+```text
+Install skills/<skill-name> from https://github.com/smturtle2/agent-skills into your project skills directory.
+```
+
+CLI alternative: `npx skills add smturtle2/agent-skills -s <skill-name>` or
+`gh skill install smturtle2/agent-skills <skill-name>` — path matrix in
+`docs/02-harnesses.md`.
+
+<!--
+Catalog template. When adding a skill, append a section here following this shape and add
+its row to the Skills table above:
+
+### `<skill-name>`
+
+<one-line description>
+
+| Field | Details |
+| --- | --- |
+| Folder | `skills/<skill-name>` |
+| Use when | <trigger conditions> |
+| Produces | <outputs> |
+
+Install:
+
+```text
+Use $skill-installer to install skills/<skill-name> from https://github.com/smturtle2/agent-skills.
+```
+
+-->
+
+
 
 ## Create a skill
 

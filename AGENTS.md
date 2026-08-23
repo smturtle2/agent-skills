@@ -27,6 +27,9 @@ Every skill in this repository satisfies all of the following:
   skill or a constant justified in one line beside its definition.
 - An `evals/evals.json` with 3+ prompts and expected behaviors, sized to demonstrate the
   gap this skill closes relative to a no-skill run.
+- A README entry, updated in the same commit as the skill itself: one row in the
+  `## Skills` table and one catalog section carrying the skill's install prompt
+  (`Use $skill-installer to install skills/<name> from https://github.com/smturtle2/agent-skills.`).
 
 ## Writing rules
 
