@@ -37,6 +37,11 @@ Stated in a `## Contract` section before any procedure text:
    skill hands off or terminates. "Stop when the test suite passes," with concrete
    triggers, replaces vague ones like "user frustration."
 
+In most contracts in this collection, component 5 lives inside `### Failure branches`:
+each blocked route already carries its named stop action ("stop before drafting", "ask
+one question"), so a separate escalation section appears only when the transfer logic
+outgrows a single line.
+
 ## Rules that keep contracts honest
 
 ### State each rule once

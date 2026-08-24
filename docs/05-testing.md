@@ -20,7 +20,7 @@ Anthropic's recommended order — evals before documentation
     {
       "id": 1,
       "prompt": "<realistic user task>",
-      "expected_behavior": [
+      "expectations": [
         "Uses an appropriate PDF library or CLI",
         "Covers every page of the document",
         "Saves output to <path> in <format>"
@@ -29,6 +29,9 @@ Anthropic's recommended order — evals before documentation
   ]
 }
 ```
+
+The key names follow the official skill-creator schema (`skill_name` + `evals[]`
+with `expectations`).
 
 3. **Establish the no-skill baseline** for those same prompts.
 4. **Write minimal instructions** sufficient to pass — content addressing observed gaps
@@ -101,3 +104,8 @@ Signals that test effort is correctly sized:
 Draft skill → run evals with-skill and without-skill in parallel → compare → revise
 against the contract (not by appending clauses) → repeat until the delta is stable and
 the feedback is empty.
+
+**Improving an existing skill:** the baseline is the previous version — snapshot it into
+the eval workspace before editing, then run the same eval prompts against both versions
+in parallel (see skill-creator's improve mode). The delta between versions, not the
+pass-count of the new one, decides what changed.

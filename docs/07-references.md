@@ -2,6 +2,10 @@
 
 Primary sources behind every claim in this collection. Surveyed August 2026.
 
+Link verification (2026-08-24): all links below were fetched and live except the Dust
+post, whose content renders client-side and returns empty to a fetch — treat its claims
+as unverified until read in a browser.
+
 ## Specification and standards
 
 - [Agent Skills specification](https://agentskills.io/specification) — canonical format:
