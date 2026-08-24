@@ -42,11 +42,17 @@ Every skill in this repository satisfies all of the following:
 
 ## Verification
 
-Before committing a new or modified skill:
+The same check runs automatically on every push and pull request via
+`.github/workflows/skills.yml`, which validates every skill under `skills/`.
+
+Before committing a new or modified skill, reproduce it locally:
 
 ```bash
-skills-ref validate skills/<name>
+npx -y skills-ref@0.1.5 validate skills/<name>
 ```
+
+(Install globally instead if preferred: `npm i -g skills-ref`, then
+`skills-ref validate skills/<name>`.)
 
 Run the eval prompts against a fresh agent session with the skill loaded and confirm the
 expected behaviors hold. Record results in `evals/results-<date>.md` beside `evals.json`.

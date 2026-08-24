@@ -1,0 +1,19 @@
+name: validate-skills
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate every skill
+        run: |
+          for d in skills/*/; do
+            npx -y skills-ref@0.1.5 validate "$d"
+          done
