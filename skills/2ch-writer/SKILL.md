@@ -25,7 +25,7 @@ it just wrote. Neither input → failure branches.
 |-------|------|----------|-------------|
 | `material` | file paths, URLs, or pasted text | yes | What the story dramatizes. Its facts stay recognizable in the thread. |
 | `genre` | free text | no | Any named genre. Absent → inferred from the material's tone, and the inference is stated at delivery. |
-| `length_hint` | time- or scale-like expression | no | What the user expects the reading to *feel* like. It is a signal about breadth of drama — how many distinct situations the thread can carry — not a target count. Absent → the arc's own needs set the size; a short thread that completes its arc is a valid output. |
+| `length_hint` | time- or scale-like expression | no | What the user expects the reading to *feel* like. It is a signal about breadth of drama — how many distinct situations the thread can carry — not a target count. Absent → the default breadth is the room's full processing of the material: every situation runs until the room is out of replies, and the run ends where the arc's need puts it. A short thread is what a thin arc or an explicit short request yields, not the resting default. |
 | `voice_samples` | pasted text, or links | no | The user's own writing, a writer they like, or a community's posts. When present, extract spoken habits from them first — rhythm, vocabulary, tics, register — and build the thread's voices from those habits instead of inventing. |
 | `language` | language of the request | no | Body text and board conventions render in this language. Absent → the request's language. Proper nouns and researched names keep the spelling their source uses. |
 | `thread_input` | path or URL of an existing thread HTML | no | Source for the conversion run. May be a thread written by this skill or any external thread whose posts expose number, name field, ID, and body. |
@@ -70,8 +70,11 @@ it just wrote. Neither input → failure branches.
    function is observing the thread's own state — counting progress, noting how far the
    thread has come, cheering on volume, empty agreement — does not earn its place; that
    same beat-space carries a remark about the world instead (mock the event, not the
-   thread's size). Single-line reactions ("ㅁㅊ", "wat", "lol") are texture and belong in
-   a thread's rhythm; they stop being texture the moment they replace content.
+   thread's size). The one-breath reply is the board's default answer-form: a reply
+   answers the post or scene at hand and is done the moment its act is done — most of the
+   page is those acts. A wall stays reserved for the acts that need one: a live report, a
+   list, a lore drop, a transcript, a quoted post. A post that merely observes the thread
+   replaces content.
 4. **Voices are distinguishable people, not labels.** Any two posts by different posters,
    swapped, must read wrong. Anonymous posters carry no demographic description —
    anonymity is what lets any reader inhabit any voice.
@@ -161,10 +164,11 @@ enter the thread as things *people in this world already say*.
 ### 3. Design the people (stable goal)
 
 Give each recurring poster a **stake** in the matter and one **speech habit** — register,
-topic vocabulary, rhythm, or a tick. The stake decides what they know and why they post;
-the habit decides how they're recognized. Named voices number whatever the drama
-requires — some threads run on the OP plus the crowd — and the board-function roster in
-the style guide is a diagnostic for hearing blur, not a headcount to fill.
+topic vocabulary, rhythm, a tick, or how they hold length: who answers in one-breath
+acts, who never posts short, who only talks in walls. The stake decides what they know
+and why they post; the habit decides how they're recognized. Named voices number whatever
+the drama requires — some threads run on the OP plus the crowd — and the board-function
+roster in the style guide is a diagnostic for hearing blur, not a headcount to fill.
 
 ### 4. Write sequentially (stable goal)
 
@@ -174,6 +178,15 @@ fill. When a story must span several responses, stop at the end of a beat, state
 continuation plan, and keep numbering continuous if the work continues — each batch
 opens its own complete beat so the whole is a series of full rises, never a stretched
 middle.
+
+Length is the harvest, not a target: before drafting, list what the thread will run —
+the events the material itself carries, the points a person in the field would contest,
+the stake of each designed voice, and the stretches of the material's timeline — and
+report the list. Each situation runs until the room is out of replies about it — the
+reply unit is the one-breath act, and a beat is full when those acts have answered,
+argued, and left, not when narration filled it; it is cut only after it is exhausted (the
+sag fix applies then, not before). The thread stops where the arc's need puts it; the run
+builds no ceiling and pads nothing.
 
 ### 5. Reader audit (stable goal — feedback loop)
 

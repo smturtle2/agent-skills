@@ -81,6 +81,26 @@
         "No script file is written and no speaker labels are invented; no random-voice assignment happens on a source whose post shape does not identify speakers.",
         "The report states what a valid thread needs: posts exposing number, name field, ID, and body."
       ]
+    },
+    {
+      "id": "longform-harvest",
+      "prompt": "길게 만들어줘. 재료: 구청 문화팀이 국립도서관 2층 서고에서 30년 된 봉투를 발견했다. 봉투 겉면에 '식물학회 총회'라고 손으로 쓰여 있었고, 개봉을 맡은 사서는 수신인이 1973년에 폐지된 부서의 총무라고 했다.",
+      "expectations": [
+        "The situation list is reported before drafting, drawn from all four sources: the material's own events, the points a person in the field would contest, the stake of each designed voice, and the stretches of the material's timeline.",
+        "No situation ends while the room still answers it; each one covers its rise, turn, and release before the next opens.",
+        "The thread ends where the arc's need decides; the run imposes no ceiling and pads nothing beyond the harvest.",
+        "No post's whole function observes the thread's own state, and no beat repeats an earlier one's skeleton."
+      ]
+    },
+    {
+      "id": "default-exchange-mix",
+      "prompt": "이 영상 스레드로 만들어줘 https://www.youtube.com/watch?v=vrVi3e8Di9s",
+      "expectations": [
+        "With no length instruction, the run still processes the material broadly: multiple distinct situations appear and complete, not one quick pass over the material.",
+        "One-breath replies are the page's default shape — short exchanges appear throughout — and walls appear only where a post's act needs one (live report, list, lore drop, transcript, quoted post), not as the page's standard shape.",
+        "No post's whole function observes the thread's own state; no beat repeats another's skeleton; nothing is added to stretch the run.",
+        "The deliverable report states the breadth achieved relative to the default (the room's full processing of the material)."
+      ]
     }
   ]
 }

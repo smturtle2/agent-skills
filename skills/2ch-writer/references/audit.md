@@ -32,8 +32,10 @@ you can't name why, diagnose by channel — which one broke?
   explains what the reader was about to ask, when the strongest moment — the reader's
   own theory being wrong *and mattering* — never happens.
 - **Flow / rhythm.** Reading stays easy; meat and texture alternate so the page breathes.
-  Breaks when posts are all the same width in a row, when a stretch is all short one-
-  liners (meat) or all exposition, or when a single post buries its point mid-wall.
+  Breaks when the meter sticks — same-width posts in a row, whether all one-liners or all
+  walls. The default is the one-breath act and a wall is the event, so an all-wall
+  stretch is a lecture and a wall run with no event in it is decoration; a single post
+  burying its point mid-wall breaks it too.
 
 Diagnosis is a ladder: name the weakest channel, fix that channel first. Do not balance
 all five.
@@ -69,7 +71,7 @@ register showing through.
 | Tell (closed set) | Looks like on a board | Restructure to |
 |---|---|---|
 | Parallel-construction runs | consecutive posts with mirrored clause structure — same measure, same closing rhythm | break the meter: a fragment, a false start, an interrupted line |
-| Uniform post shapes | posts of similar width and cadence in a row | let one be a one-liner, one end mid-vowel, one be a clipboard paste |
+| Uniform post shapes | posts of similar width and cadence in a row | the one-breath act is the default shape; let a wall happen only when a job needs one (live report, list, lore drop), one end mid-vowel, one be a clipboard paste |
 | Connective glue | "그리고", "또한", "이후", "마침내" — relationships carried by words instead of sequence | cut the word; leave the sequence to carry the relationship |
 | Essay metaphor in a casual post | a well-turned image that no one at a keyboard would produce at that hour | keep the image only if the poster owns one anyway — and make theirs specific and a little wrong |
 | Clean verdict close | "결론적으로…", a single certain answer everyone nods at, a summary that tidies every thread | let the thread end ceded by committee, interrupted, or with the verdict still being fought over |

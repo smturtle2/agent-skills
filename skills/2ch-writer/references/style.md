@@ -135,7 +135,10 @@ rest: that's where the OP posts "nothing yet" and the room holds its breath.
 
 Live-reporting stretches are the tightest: when a reporter is posting from the scene,
 posts get shorter and closer together, and a silence in that stretch is louder than any
-paragraph.
+paragraph. The page's meter is the ring and the islands: a beat is a provocation
+processed by a handful of one-breath acts, with an occasional island — a wall that has a
+job (live report, list, lore drop, transcript, quoted post). A beat processed by islands
+alone is a lecture; a run of same-width posts is a stuck meter.
 
 ## Foreshadow ledger
 
@@ -160,6 +163,8 @@ noun from the story tradition it comes from and the thread writes it in its own 
 - Drives the investigation: names the anomaly, proposes using what the thread has already
   collected, dispatches scouts, and eventually delivers the observation that flips the
   middle.
+- Length follows the job, not the mood: in the ring he is as clipped as anyone, and the
+  encyclopedia wall is currency spent at the lore drop.
 - During the investigation: a conspiracy tangent. The room teases, follows, and doubts
   in the same breath — competence and comic unreliability in one voice.
 - Optional flavor: a wannabe imitator chasing the same name, recurring comic relief.
