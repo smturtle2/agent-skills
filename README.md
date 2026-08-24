@@ -66,8 +66,8 @@ Install:
 
 ### `2ch-writer`
 
-Turns any source material into an anonymous text-board thread story in any genre;
-occult-or-horror threads are led by 「悪魔情報」.
+Turns any material into an anonymous board-thread story with researched detail,
+distinct voices, and no filler; occult-or-horror threads are led by 「悪魔情報」.
 
 | Field | Details |
 | --- | --- |
