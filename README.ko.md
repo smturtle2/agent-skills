@@ -24,8 +24,7 @@ agent-skills/
 
 | Skill | 적합한 용도 | 출력 | 설치 |
 |-------|----------|--------|---------|
-| [`2ch-writer`](#2ch-writer) | 모든 소재를 익명 게시판 스레드 이야기로 변환 | 단독 라이트 테마 HTML 스레드 페이지 | [프롬프트](#2ch-writer) |
-| [`reading-writer`](#reading-writer) | 모든 자료를 TTS용 듣기 스크립트로 변환 | 일반 텍스트 내레이션 스크립트 (`.txt`) | [프롬프트](#reading-writer) |
+| [`2ch-writer`](#2ch-writer) | 모든 소재를 익명 게시판 스레드 이야기로 변환; 스레드를 TTS 듣기 스크립트로 변환 | 단독 라이트 테마 HTML 스레드 페이지; 요청 시 일반 텍스트 TTS 스크립트 | [프롬프트](#2ch-writer) |
 
 ## 빠른 설치
 
@@ -68,34 +67,19 @@ Install:
 
 모든 소재를 조사 기반 디테일·구분되는 목소리·필러 없는 구성의 익명 게시판 스레드
 이야기로 바꿉니다; 오컬트·호르 계열 스레드는 「悪魔情報」가 이끕니다.
+작성된 스레드 — 같은 글 형태를 가진 외부 스레드도 — 를 듣기 요청이 있으면
+역할 라벨(글쓴이 / 익명 / 닉네임 소유자)이 붙은 TTS 듣기 스크립트로 변환합니다.
 
 | Field | Details |
 | --- | --- |
 | Folder | `skills/2ch-writer` |
-| Use when | 자료·링크·뉴스를 스레드 형식 픽션이나 모큐멘터리 보드 스토리로 만들 때 |
-| Produces | 단독 라이트 테마 HTML 스레드 페이지 |
+| Use when | 자료·링크·뉴스를 스레드 형식 픽션이나 모큐멘터리 보드 스토리로 만들 때, 또는 스레드를 소리로 읽을 필요가 있을 때(스크립트/오디오북) |
+| Produces | 단독 라이트 테마 HTML 스레드 페이지; 요청 시 일반 텍스트 TTS 스크립트 |
 
 Install:
 
 ```text
 Install skills/2ch-writer from https://github.com/smturtle2/agent-skills into your skills directory.
-```
-
-### `reading-writer`
-
-모든 자료 — 문서, 기사, 전사본, 웹 페이지 — 를 발화형 정규화와 균일한 휴식이
-적용된 TTS 친화 일반 텍스트로 바꿉니다.
-
-| Field | Details |
-| --- | --- |
-| Folder | `skills/reading-writer` |
-| Use when | 콘텐츠를 듣기용 또는 TTS 엔진 입력용으로 준비할 때 |
-| Produces | 일반 텍스트 내레이션 스크립트 (`.txt`) |
-
-Install:
-
-```text
-Install skills/reading-writer from https://github.com/smturtle2/agent-skills into your skills directory.
 ```
 
 

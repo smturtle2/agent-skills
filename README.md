@@ -24,8 +24,7 @@ agent-skills/
 
 | Skill | Best for | Output | Install |
 |-------|----------|--------|---------|
-| [`2ch-writer`](#2ch-writer) | Turning any material into anonymous-board thread stories | Standalone light-theme HTML thread page | [Prompt](#2ch-writer) |
-| [`reading-writer`](#reading-writer) | Converting any material into TTS-ready listening scripts | Plain-text narration script (`.txt`) | [Prompt](#reading-writer) |
+| [`2ch-writer`](#2ch-writer) | Turning any material into anonymous-board thread stories; converting a thread into a TTS listening script | Standalone light-theme HTML thread page; plain-text TTS script on request | [Prompt](#2ch-writer) |
 
 ## Quick Install
 
@@ -68,34 +67,20 @@ Install:
 
 Turns any material into an anonymous board-thread story with researched detail,
 distinct voices, and no filler; occult-or-horror threads are led by 「悪魔情報」.
+Written threads — and external threads in the same post shape — also convert into
+TTS listening scripts with role labels (글쓴이 / 익명 / named voices) when listening
+delivery is requested.
 
 | Field | Details |
 | --- | --- |
 | Folder | `skills/2ch-writer` |
-| Use when | material, links, or news should become thread-format fiction, or a fake-documentary board story is requested |
-| Produces | standalone light-theme HTML thread page |
+| Use when | material, links, or news should become thread-format fiction, a fake-documentary board story is requested, or a thread should be read aloud (script/audiobook) |
+| Produces | standalone light-theme HTML thread page; plain-text TTS script on request |
 
 Install:
 
 ```text
 Install skills/2ch-writer from https://github.com/smturtle2/agent-skills into your skills directory.
-```
-
-### `reading-writer`
-
-Converts any material — documents, articles, transcripts, web pages — into
-TTS-friendly plain text with spoken-form normalization and uniform pauses.
-
-| Field | Details |
-| --- | --- |
-| Folder | `skills/reading-writer` |
-| Use when | content is being prepared for listening or a text-to-speech engine |
-| Produces | plain-text narration script (`.txt`) |
-
-Install:
-
-```text
-Install skills/reading-writer from https://github.com/smturtle2/agent-skills into your skills directory.
 ```
 
 
