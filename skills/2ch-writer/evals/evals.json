@@ -4,7 +4,7 @@
     {
       "id": "longform-no-filler",
       "prompt": "어젯밤 옥상에서 하얀 인형 같은 사람이 웃고 있었다는 글이 실시간 검색에 올랐다는 설정으로, 1시간 이상 분량의 스레드 만들어줘.",
-      "expected_behaviors": [
+      "expectations": [
         "No post exists whose whole function is observing the thread's own state: no progress counting, no post-count milestones, no volume cheering, no empty agreement.",
         "The thread proceeds in complete beats, ending the run at a beat boundary with a stated continuation plan when the story spans multiple responses.",
         "Length reads as the arc's outcome: the requested scale is interpreted as breadth of drama and the achieved scale is reported at delivery.",
@@ -14,7 +14,7 @@
     {
       "id": "callback-readability",
       "prompt": "Turn this into a thread story: scientists repeated fusion ignition three times this year with growing net energy yield, the latest shot doubled the gain, and an off-site lab claims a magnetic-confinement route reached steady state for a second.",
-      "expected_behaviors": [
+      "expectations": [
         "Every backward reference names the content ('the lab with the magnetic route', '어젯밤 그 2배 건'), never a position a reader would have to find.",
         "Any >>n anchors appear only as board idiom; following them is never required to understand any post, and meaning never depends on a number.",
         "Material claims keep their original claims; dramatization attaches around them.",
@@ -24,7 +24,7 @@
     {
       "id": "researched-specificity",
       "prompt": "자체 호스팅하는 사람들 사이에서 터진 본체 주변 소음 이야기를 스레드로 만들어줘. 자료: NAS에서 2TB HDD가 듀얼팬 케이스에서 진동을 일으켰는데, 가족이 거실에서 못 잔다고 한다.",
-      "expected_behaviors": [
+      "expectations": [
         "The thread contains concrete specifics a practitioner in the domain would recognize: correct component names, model references, numbers, or precedents.",
         "Specifics beyond the material are framed as the world's own knowledge or rumor, not presented as the material's facts.",
         "The delivery message notes which specifics came from research versus established knowledge when tools were unavailable.",
@@ -34,7 +34,7 @@
     {
       "id": "fresh-casting",
       "prompt": "Use this cooking-fail blog post as material for a thread story. Post: tried mirror-glaze cake at 2am, glaze slid off onto the cat, smoke alarm agreed with the cat.",
-      "expected_behaviors": [
+      "expectations": [
         "Named voices derive from stakes in the material (who suffered, who does this for a living, who is offended by the technique) — not from a fixed slot order in the same sequence.",
         "Each named voice has one speech habit that survives across its posts; swapping two posters' lines reads wrong.",
         "Anonymous posters carry no demographic descriptors.",
@@ -44,7 +44,7 @@
     {
       "id": "horror-leader-arc",
       "prompt": "한 달째 매일 새벽 3시 33분에 현관 벨이 울리는데, 카메라에는 아무도 찍히지 않는다. 괴담 스레드 만들어줘.",
-      "expected_behaviors": [
+      "expectations": [
         "Post 1 states the ordinary situation gone strange; the middle escalates; the landing closes the arc (abrupt cutoff or compilation post).",
         "「悪魔情報」 leads: arrives late to a piled-up thread, greeted by regulars, names the anomaly and steers the investigation, shows the conspiracy-tangent flaw.",
         "The handle is rendered naturally in the request's language with no imposed fixed spelling.",
@@ -54,12 +54,32 @@
     {
       "id": "spectator-trust",
       "prompt": "동네 세탁소 앞에 매일 밤 12시에만 나타나는 검은 고양이 이야기를 스레드로 만들어줘. 자료: 주민 블로그 — 그 고양이는 세탁소를 지키던 개의 장례식에 매주 오는 거였다.",
-      "expected_behaviors": [
+      "expectations": [
         "The material's explanation does not lead: the room runs its own theories, including wrong ones, for a stretch before any answer assembles.",
         "Any answer that lands is delivered by a poster who earned it, comes late, or stays open — the reader is not handed the plot by a narrator or an instant accepted expert.",
         "At least one open question survives the landing, so the thread's own uncertainty stays alive.",
         "Voices range in fluency: at least some posts are sparse, fragmentary, or confidently wrong in a way that belongs to that poster.",
         "No clean-verdict close: the landing does not tidy every thread or read like a summary written to be quoted."
+      ]
+    },
+    {
+      "id": "tts-script-roles",
+      "prompt": "이 스레드를 TTS로 읽을 수 있게 스크립트로 바꿔줘.\n\n【우리 동네】 자정에만 나타나는 세탁소 검은 고양이\n1 ：：2026/08/17(월) 23:52:11 ID:qXr7mT2z\n우리 동네 세탁소 앞 이야기를 하나 가지고 왔습니다.\n2 ：：2026/08/17(월) 23:58:40 ID:lD9sWbQ4\n정각이라고? 신기하네. 그 시간이면 건조기 마지막 사이클이 돌고 있는 시간대야.\n3 ：：2026/08/18(화) 00:14:33 ID:qXr7mT2z\n사진은 못 찍었습니다. 폰을 꺼내는 순간 시선을 떼는 바람에.\n4 ：悪魔情報：2026/08/18(화) 00:41:07 ID:vN6cFkR8\n야행성 고양이를 세탁소에 묻는 일은 서두르지 말아라. 건조기는 열원이다.",
+      "expectations": [
+        "The opening post's ID key (qXr7mT2z) becomes the 글쓴이 role: post 1 opens the script's first segment labeled 글쓴이, and post 3 (same ID) re-enters with a fresh 글쓴이 label after the anonymous segment.",
+        "Post 2 (anonymous, different ID) merges into one 익명 segment labeled once at entry — no second 익명 label inside the same run of anonymous posts.",
+        "Post 4 is labeled with the source's own name 悪魔情報 as it appears — never translated, transliterated, or spelled out.",
+        "No raw ID string (qXr7mT2z, lD9sWbQ4, vN6cFkR8), timestamp, or post number appears anywhere in the script.",
+        "Every sentence-final mark is followed by exactly two newlines; the thread title heads the file; post wording survives verbatim."
+      ]
+    },
+    {
+      "id": "tts-script-structure-gate",
+      "prompt": "이 스레드 HTML을 TTS 듣기 스크립트로 변환해줘.\n\n【요청】 서버 문의\n1 ：：2026/08/17(월) 23:52:11\n누가 나 대신 물어봐줘. 문의 태그 없음.\n2 ：：2026/08/17(월) 23:55:00\n문의 태그가 없으면 김팀장이 안다는 거 아냐.",
+      "expectations": [
+        "The agent names the missing piece (the ID/stamp field the source does not carry) and stops before producing a script.",
+        "No script file is written and no speaker labels are invented; no random-voice assignment happens on a source whose post shape does not identify speakers.",
+        "The report states what a valid thread needs: posts exposing number, name field, ID, and body."
       ]
     }
   ]

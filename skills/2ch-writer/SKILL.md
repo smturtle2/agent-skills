@@ -1,6 +1,6 @@
 ---
 name: 2ch-writer
-description: Turns any material — links, news, articles, texts, ideas — into a complete anonymous text-board thread story with researched detail, distinct voices, and no filler, rendered as a standalone light-theme HTML page. Use when the user wants material or an idea rewritten as board-thread fiction, a fake-documentary thread narrative, or 2ch-style スレッド storytelling — including when they only say "스레드로 만들어줘", "thread story", "as if the board found out", or describe a situation they imagine a board would chew on.
+description: Turns any material — links, news, articles, texts, ideas — into a complete anonymous text-board thread story with researched detail, distinct voices, and no filler, rendered as a standalone light-theme HTML page; also converts any thread in its post shape into a TTS listening script (role-labeled 2ch convention) when listening delivery is requested. Use when the user wants material or an idea rewritten as board-thread fiction, a fake-documentary thread narrative, or 2ch-style スレッド storytelling — including when they only say "스레드로 만들어줘", "thread story", "as if the board found out", or describe a situation they imagine a board would chew on.
 ---
 
 # 2ch Writer
@@ -16,6 +16,11 @@ thread came to need them. This skill delivers the first kind and refuses the sec
 
 ### Inputs
 
+The run is one or both of two modes, picked by what is supplied: `material` starts the
+writing run; `thread_input` starts the conversion run; when the request asks for a
+listening script ("읽게", "tts", "audiobook"), the writing run also converts the thread
+it just wrote. Neither input → failure branches.
+
 | Input | Type | Required | Description |
 |-------|------|----------|-------------|
 | `material` | file paths, URLs, or pasted text | yes | What the story dramatizes. Its facts stay recognizable in the thread. |
@@ -23,8 +28,11 @@ thread came to need them. This skill delivers the first kind and refuses the sec
 | `length_hint` | time- or scale-like expression | no | What the user expects the reading to *feel* like. It is a signal about breadth of drama — how many distinct situations the thread can carry — not a target count. Absent → the arc's own needs set the size; a short thread that completes its arc is a valid output. |
 | `voice_samples` | pasted text, or links | no | The user's own writing, a writer they like, or a community's posts. When present, extract spoken habits from them first — rhythm, vocabulary, tics, register — and build the thread's voices from those habits instead of inventing. |
 | `language` | language of the request | no | Body text and board conventions render in this language. Absent → the request's language. Proper nouns and researched names keep the spelling their source uses. |
+| `thread_input` | path or URL of an existing thread HTML | no | Source for the conversion run. May be a thread written by this skill or any external thread whose posts expose number, name field, ID, and body. |
 
 ### Outputs
+
+**Writing run (each thread):**
 
 - One standalone HTML file built from [assets/viewer.html](assets/viewer.html): the
   template's slots are filled, nothing else in the file changes. Path agreed with the
@@ -33,6 +41,17 @@ thread came to need them. This skill delivers the first kind and refuses the sec
 - Posts numbered `1..N` in order; each shows number, name field, timestamp+ID line, and
   body.
 - Light theme preserved: white background, dark text.
+
+**Conversion run (each script):**
+
+- One plain-text `.txt` file; path agreed with the user or derived from the thread
+  title, same convention as the HTML file.
+- The thread title as a heading line, then the posts in order as role segments — each
+  segment opens with its label once and continues without repetition (see invariant 13).
+- Every sentence-final mark followed by exactly two newlines — the spacing constant: two
+  newlines is the shared pause token a TTS engine reads as a break.
+- No raw post IDs, stamps, post numbers, anchor text, markup, or invented strings
+  anywhere in the script.
 
 ### Invariants
 
@@ -80,9 +99,27 @@ thread came to need them. This skill delivers the first kind and refuses the sec
    format's fuel and its hardest failure mode, because the writer's own instinct is to
    clear things up.
 10. **Voices differ in fluency, not only in subject.** Some posters write carefully,
-    some are sparse, evasive, gappy, or simply wrong in a way that belongs to that
-    poster. A thread where every reply is complete, even, and politely argued has one
-    voice wearing names.
+     some are sparse, evasive, gappy, or simply wrong in a way that belongs to that
+     poster. A thread where every reply is complete, even, and politely argued has one
+     voice wearing names.
+
+11. **The script sounds the way the thread reads.** Outside the closed conversion set in
+    [references/tts.md](references/tts.md) — numbers, dates, and times to spoken forms;
+    emoticons and letter-repetition to sound equivalents; markup unwrapped; stamps, post
+    numbers, and anchors dropped or spoken per the table — the wording of every post
+    survives verbatim. The conversion never paraphrases a voice.
+
+12. **Voices are source roles, never random strings.** A post carries the voice of its
+    name field when it has one. The opening post's ID belongs to the thread's own voice —
+    **글쓴이**, the board's standard term for it. Every other post without a name is the
+    anonymous voice, **익명** — many anonymous hands, one voice, because without names
+    they are indistinguishable; their IDs are never read. No label is invented where the
+    source supplies none.
+
+13. **Labels sit at role changes and are spoken once.** Each segment opens with its
+    label on the same line as the first unit it labels — `글쓴이: `, `익명: `, or the
+    source's own name — and carries no punctuation of its own; the pause after it comes
+    from the content's sentence-final mark. Within a segment, labels never repeat.
 
 ### Failure branches
 
@@ -94,6 +131,10 @@ thread came to need them. This skill delivers the first kind and refuses the sec
   sources.
 - Genre not inferable *and* the choice changes the whole shape → ask one clarifying
   question; otherwise infer and state the inference at delivery.
+- Neither `material` nor `thread_input` supplied → name the missing input, stop.
+- Thread posts missing any of number, name field, ID, or body → name the missing part,
+  stop before converting (the source's shape decides who speaks; nothing is inferred
+  that the source itself does not carry).
 
 ## Procedure
 
@@ -170,7 +211,28 @@ This is the locked step because the HTML shape is the output contract: fill
 numbered from 1, anonymous name fields left empty; body text with HTML special
 characters escaped. Leave the styling untouched.
 
-### 7. Deliver (stable goal)
+### 7. Convert to a TTS script (fragile sequence)
+
+Runs when conversion is requested — on `thread_input` or, when the request asked for a
+script alongside writing, on the thread finished in steps 1–6.
+
+1. **Verify structure.** Each post exposes number, name field (possibly empty), ID in
+   its stamp, and body; otherwise follow the failure branch.
+2. **Segment by role.** In post order: the opening post's ID key gets 글쓴이; named posts
+   get their name; the rest get 익명. Consecutive posts of the same role merge into one
+   segment; every role change opens a new one.
+3. **Emit labels.** Each segment begins with its label (`글쓴이: `, `익명: `, or the
+   source's name) on the head line, once — never repeated inside the segment.
+4. **Apply spoken forms.** Walk the segment content through the closed set in
+   [references/tts.md](references/tts.md): numbers, dates, times → spoken forms;
+   emoticons and letter-repetition → sound equivalents; markup unwrapped; stamps, post
+   numbers, and `>>n` anchors dropped or spoken per the table. Everything else verbatim.
+5. **Space it.** After each sentence-final mark write exactly two newlines; head the
+   file with the thread title as a heading line.
+6. **Deliver.** Write the `.txt`; report the path, segment count, the role assignment
+   (글쓴이's ID key, named voices), and every conversion or drop the closed set applied.
+
+### 8. Deliver (stable goal)
 
 Report the file path, post count, genre handling (named or inferred), which specifics
 came from research vs. established knowledge, the achieved scale relative to the
@@ -196,6 +258,21 @@ agnostic naming a real piece of hardware is an explainer who has a stake, the jo
 on the company's spokesperson rather than on the residents, callbacks run by content
 ("the one under the pylons"), and the thread ends when its arc closes.
 
+**TTS script shape** (the spacing constant; content always comes from the thread):
+
+```text
+<thread title>
+
+
+글쓴이: 
+<post 1 wording, untouched>
+
+
+익명: 
+<posts 2–4 merged; each sentence-final mark closes its line with two newlines>
+
+```
+
 ## References
 
 - [references/style.md](references/style.md) — craft guide: read before drafting —
@@ -204,4 +281,6 @@ on the company's spokesperson rather than on the residents, callbacks run by con
 - [references/audit.md](references/audit.md) — audit guide: read before step 5 — board
   reward channels, reader-simulation method, residue scan, and when-to-leave-open
   calibration.
+- [references/tts.md](references/tts.md) — conversion table: read before step 7 — the
+  closed set of spoken forms and drop rules, each with its reason.
 - [assets/viewer.html](assets/viewer.html) — light-theme template; fill slots only.
