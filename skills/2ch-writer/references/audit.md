@@ -25,7 +25,7 @@ you can't name why, diagnose by channel — which one broke?
   a killer retort, a repeatable tick, a tic you'd copy in real life. Breaks when every
   post could be authored by one competent person; no post contains a line worth quoting.
 - **Mind simulation.** Readers model each poster as a mind with stakes, blind spots, and
-  a temper — "that's so him", or worry when a regular goes quiet. Breaks when posters
+  a temper. Breaks when posters
   exist to deliver lines and nobody has anything to lose.
 - **Curiosity / prediction.** The reader wants the next post and holds a private theory,
   satisfied or upended. Breaks when information arrives pre-digested, when the thread
@@ -56,7 +56,7 @@ text (post number + short quote):
 - the moment the room's deduction runs ahead of the evidence.
 
 Stay a reader during the read. The report is the experience; the mechanism checks come
-after, in the audit tests. A report that says "it was fine" has found nothing — push to
+after, in the audit tests. A report that stays vague has found nothing — push to
 the specific post that flattened, and name the channel it broke.
 
 ## Residue scan
@@ -71,12 +71,13 @@ register showing through.
 | Tell (closed set) | Looks like on a board | Restructure to |
 |---|---|---|
 | Parallel-construction runs | consecutive posts with mirrored clause structure — same measure, same closing rhythm | break the meter: a fragment, a false start, an interrupted line |
-| Uniform post shapes | posts of similar width and cadence in a row | the one-breath act is the default shape; let a wall happen only when a job needs one (live report, list, lore drop), one end mid-vowel, one be a clipboard paste |
-| Connective glue | "그리고", "또한", "이후", "마침내" — relationships carried by words instead of sequence | cut the word; leave the sequence to carry the relationship |
+| Uniform post shapes | posts of similar width and cadence in a row | the one-breath act is the default shape; let a wall happen only when a job needs one (live report, list, lore drop) |
+| Connective glue | relationships carried by connective words instead of sequence | cut the word; leave the sequence to carry the relationship |
 | Essay metaphor in a casual post | a well-turned image that no one at a keyboard would produce at that hour | keep the image only if the poster owns one anyway — and make theirs specific and a little wrong |
-| Clean verdict close | "결론적으로…", a single certain answer everyone nods at, a summary that tidies every thread | let the thread end ceded by committee, interrupted, or with the verdict still being fought over |
+| Clean verdict close | a single certain answer everyone nods at, a summary that tidies every thread | let the thread end ceded by committee, interrupted, or with the verdict still being fought over |
 | Uniform fluency | every reply complete, evenly grammatical, doubts phrased politely | give someone half-sentences and a pet cause, someone a messy wall with the answer buried, someone too loud too early |
 | Keyboard perfection | identical punctuation and spelling habits across all posters | render each poster's keyboard: some full-width, some lowercase, some always typoing the same word |
+| Anchor-only reference | a body that contains an anchor substring or depends on resolving one | rewrite to name the content in words; bodies contain zero anchor substrings per invariant 2 |
 
 ## Calibration: when to stay open
 

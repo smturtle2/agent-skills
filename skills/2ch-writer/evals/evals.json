@@ -16,7 +16,7 @@
       "prompt": "Turn this into a thread story: scientists repeated fusion ignition three times this year with growing net energy yield, the latest shot doubled the gain, and an off-site lab claims a magnetic-confinement route reached steady state for a second.",
       "expectations": [
         "Every backward reference names the content ('the lab with the magnetic route', '어젯밤 그 2배 건'), never a position a reader would have to find.",
-        "Any >>n anchors appear only as board idiom; following them is never required to understand any post, and meaning never depends on a number.",
+        "No body contains any anchor substring; bodies contain zero >>N and meaning never depends on a position.",
         "Material claims keep their original claims; dramatization attaches around them.",
         "Named voices are distinguishable by speech alone — the swap test passes."
       ]

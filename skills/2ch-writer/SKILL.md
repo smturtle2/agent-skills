@@ -18,8 +18,7 @@ thread came to need them. This skill delivers the first kind and refuses the sec
 
 The run is one or both of two modes, picked by what is supplied: `material` starts the
 writing run; `thread_input` starts the conversion run; when the request asks for a
-listening script ("읽게", "tts", "audiobook"), the writing run also converts the thread
-it just wrote. Neither input → failure branches.
+listening script, the writing run also converts the thread it just wrote. Neither input → failure branches.
 
 | Input | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -38,7 +37,7 @@ it just wrote. Neither input → failure branches.
   template's slots are filled, nothing else in the file changes. Path agreed with the
   user; absent agreement, a filename derived from the thread title.
 - Thread title present in both `<title>` and the page header.
-- Posts numbered `1..N` in order; each shows number, name field, timestamp+ID line, and
+- Posts numbered in order; each shows number, name field, timestamp+ID line, and
   body.
 - Light theme preserved: white background, dark text.
 
@@ -48,9 +47,8 @@ it just wrote. Neither input → failure branches.
   title, same convention as the HTML file.
 - The thread title as a heading line, then the posts in order as role segments — each
   segment opens with its label once and continues without repetition (see invariant 13).
-- Every sentence-final mark followed by exactly two newlines — the spacing constant: two
-  newlines is the shared pause token a TTS engine reads as a break.
-- No raw post IDs, stamps, post numbers, anchor text, markup, or invented strings
+- Every sentence-final mark followed by the spacing constant — two newlines is the shared pause token a TTS engine reads as a break.
+- No raw post IDs, stamps, post numbers, markup, or invented strings
   anywhere in the script.
 
 ### Invariants
@@ -60,11 +58,7 @@ it just wrote. Neither input → failure branches.
    cutoff when the arc is done, or a summary/compilation post. This is the entry
    condition: the format's drama lives in the room's reactions, not in narration about
    the events.
-2. **The thread reads straight through.** Everything a reader needs appears in order or is
-   asked for in the post that needs it. References back to earlier content name the
-   *content* ("the one who went back inside", "아까 그 인형 찍은 사람"), not a position.
-   `>>n` anchors may appear as board idiom, but a reader who ignores them loses nothing —
-   where a post depends on being understood, the words carry it.
+2. **The thread reads straight through and bodies contain no anchors.** Every post displays its sequential number in the meta line. In the body, references back to earlier content name the content — the person described by their action and the object they handled — not a position. Bodies contain zero anchor substrings; a post whose meaning depends on resolving an anchor is not written yet — the words carry the reference.
 3. **Every post earns its place.** Each post adds at least one of: new information about
    the world, a character beat, tension, comedy, or a reply collision. A post whose whole
    function is observing the thread's own state — counting progress, noting how far the
@@ -80,8 +74,7 @@ it just wrote. Neither input → failure branches.
    anonymity is what lets any reader inhabit any voice.
 5. **Truth discipline.** Material facts keep their own claims. Real-world specifics —
    names, numbers, terminology, precedent — are the researched or established ones.
-   Invented specifics attach to the world as rumor or local knowledge ("~라는 소문인데"),
-   never as the material's own fact.
+   Invented specifics attach to the world as rumor or local knowledge in the request language's rumor framing, never as the material's own fact.
 6. **Mockery lands on claims and situations.** Board cruelty attacks arguments and
    behavior inside the frame, not groups of real people.
 7. **Horror or occult threads are led by 「悪魔情報」**, a late-arriving regular who enters
@@ -107,22 +100,22 @@ it just wrote. Neither input → failure branches.
      voice wearing names.
 
 11. **The script sounds the way the thread reads.** Outside the closed conversion set in
-    [references/tts.md](references/tts.md) — numbers, dates, and times to spoken forms;
-    emoticons and letter-repetition to sound equivalents; markup unwrapped; stamps, post
-    numbers, and anchors dropped or spoken per the table — the wording of every post
-    survives verbatim. The conversion never paraphrases a voice.
+     [references/tts.md](references/tts.md) — numbers, dates, and times to spoken forms;
+     emoticons and letter-repetition to sound equivalents; markup unwrapped; stamps, post
+     numbers, and anchors dropped or spoken per the table — the wording of every post
+     survives verbatim. The conversion never paraphrases a voice.
 
 12. **Voices are source roles, never random strings.** A post carries the voice of its
-    name field when it has one. The opening post's ID belongs to the thread's own voice —
-    **글쓴이**, the board's standard term for it. Every other post without a name is the
-    anonymous voice, **익명** — many anonymous hands, one voice, because without names
-    they are indistinguishable; their IDs are never read. No label is invented where the
-    source supplies none.
+     name field when it has one. The opening post's ID belongs to the thread's own voice —
+     **글쓴이**, the board's standard term for it. Every other post without a name is the
+     anonymous voice, **익명** — many anonymous hands, one voice, because without names
+     they are indistinguishable; their IDs are never read. No label is invented where the
+     source supplies none.
 
 13. **Labels sit at role changes and are spoken once.** Each segment opens with its
-    label on the same line as the first unit it labels — `글쓴이: `, `익명: `, or the
-    source's own name — and carries no punctuation of its own; the pause after it comes
-    from the content's sentence-final mark. Within a segment, labels never repeat.
+     label on the same line as the first unit it labels — `글쓴이: `, `익명: `, or the
+     source's own name — and carries no punctuation of its own; the pause after it comes
+     from the content's sentence-final mark. Within a segment, labels never repeat.
 
 ### Failure branches
 
@@ -138,6 +131,7 @@ it just wrote. Neither input → failure branches.
 - Thread posts missing any of number, name field, ID, or body → name the missing part,
   stop before converting (the source's shape decides who speaks; nothing is inferred
   that the source itself does not carry).
+- Body contains anchor substring → remove the anchor, rewrite the reference to name the content in words, re-validate before delivering.
 
 ## Procedure
 
@@ -185,7 +179,7 @@ the stake of each designed voice, and the stretches of the material's timeline �
 report the list. Each situation runs until the room is out of replies about it — the
 reply unit is the one-breath act, and a beat is full when those acts have answered,
 argued, and left, not when narration filled it; it is cut only after it is exhausted (the
-sag fix applies then, not before). The thread stops where the arc's need puts it; the run
+sag fix applies then, not before). Bodies contain no anchor substrings; every inter-post reference names the content in words. The thread stops where the arc's need puts it; the run
 builds no ceiling and pads nothing.
 
 ### 5. Reader audit (stable goal — feedback loop)
@@ -204,7 +198,7 @@ diagnosis decides the fix, not the firehose.
 **Then the mechanism checks:**
 - **Every post earns its place.** One that doesn't → replace it; most often it reports
   on the thread instead of the world.
-- **Callbacks carry their meaning.** If following a post requires looking up a number,
+- **Callbacks carry their meaning.** If following a post requires resolving an anchor,
   reword it to name the content.
 - **Swap test.** Two posters' lines swapped read wrong? If not, sharpen stake or habit.
 - **Fluency range.** Sparse, evasive, gappy, or wrong-voiced posts exist among the
@@ -221,8 +215,8 @@ should be visible in the reader's next pass, not just checked off.
 
 This is the locked step because the HTML shape is the output contract: fill
 [assets/viewer.html](assets/viewer.html) — title in both slots; one post block per post,
-numbered from 1, anonymous name fields left empty; body text with HTML special
-characters escaped. Leave the styling untouched.
+numbered in order, anonymous name fields left empty; body text with HTML special
+characters escaped. Bodies must contain no anchor substrings. Leave the styling untouched.
 
 ### 7. Convert to a TTS script (fragile sequence)
 
@@ -239,8 +233,8 @@ script alongside writing, on the thread finished in steps 1–6.
 4. **Apply spoken forms.** Walk the segment content through the closed set in
    [references/tts.md](references/tts.md): numbers, dates, times → spoken forms;
    emoticons and letter-repetition → sound equivalents; markup unwrapped; stamps, post
-   numbers, and `>>n` anchors dropped or spoken per the table. Everything else verbatim.
-5. **Space it.** After each sentence-final mark write exactly two newlines; head the
+   numbers, and anchors dropped or spoken per the table. Everything else verbatim.
+5. **Space it.** After each sentence-final mark write the spacing constant; head the
    file with the thread title as a heading line.
 6. **Deliver.** Write the `.txt`; report the path, segment count, the role assignment
    (글쓴이's ID key, named voices), and every conversion or drop the closed set applied.
@@ -253,10 +247,9 @@ length hint, and any continuation plan.
 
 ## Examples
 
-**Input:** an article link about a hyperscale farm that hums over a valley — no genre,
-no length hint.
+**Input:** `{{material type}}` about `{{material summary}}` — no genre, no length hint. The material's own facts and the one detail vivid enough to grab someone immediately are kept as the skeleton.
 
-**Output shape** (the template's tokens — the fixed constant; story content always comes
+**Output shape** (the template's slots — the fixed constant; story content always comes
 from the material at hand):
 
 ```html
@@ -266,23 +259,20 @@ from the material at hand):
 </article>
 ```
 
-The contract runs through the writing itself: post 1 is a resident's complaint, an
-agnostic naming a real piece of hardware is an explainer who has a stake, the joke lands
-on the company's spokesperson rather than on the residents, callbacks run by content
-("the one under the pylons"), and the thread ends when its arc closes.
+The contract runs through the writing itself: the opening post states the vivid hook, recurring posters speak from their stakes, comedy lands on a claim within the frame rather than on a group, callbacks name the content in words, and the thread ends when its arc closes. No body contains an anchor substring.
 
 **TTS script shape** (the spacing constant; content always comes from the thread):
 
 ```text
-<thread title>
+{{thread title}}
 
 
-글쓴이: 
-<post 1 wording, untouched>
+{{ROLE_LABEL}}: 
+{{post wording, untouched}}
 
 
-익명: 
-<posts 2–4 merged; each sentence-final mark closes its line with two newlines>
+{{ROLE_LABEL}}: 
+{{merged posts; each sentence-final mark closes its line with the spacing constant}}
 
 ```
 
