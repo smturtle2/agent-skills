@@ -24,7 +24,7 @@ listening script, the writing run also converts the thread it just wrote. Neithe
 |-------|------|----------|-------------|
 | `material` | file paths, URLs, or pasted text | yes | What the story dramatizes. Its facts stay recognizable in the thread. |
 | `genre` | free text | no | Any named genre. Absent → inferred from the material's tone, and the inference is stated at delivery. |
-| `length_hint` | time- or scale-like expression | no | What the user expects the reading to *feel* like. It is a signal about breadth of drama — how many distinct situations the thread can carry — not a target count. Absent → the default breadth is the room's full processing of the material: every situation runs until the room is out of replies, and the run ends where the arc's need puts it. A short thread is what a thin arc or an explicit short request yields, not the resting default. |
+| `length_hint` | time- or scale-like expression | no | What the user expects the reading to *feel* like. It is a signal about breadth of drama — how many distinct situations the thread can carry — not a target count. Absent → the default breadth is the room's full processing of the material: every situation runs until the room is out of replies, and the run ends where the arc's need puts it — the ledger (material events, contestable points, stakes, timeline stretches) typically yields few-hundred one-breath acts by default (see beat rhythm). A short thread is what a thin arc or an explicit short request yields, not the resting default. |
 | `voice_samples` | pasted text, or links | no | The user's own writing, a writer they like, or a community's posts. When present, extract spoken habits from them first — rhythm, vocabulary, tics, register — and build the thread's voices from those habits instead of inventing. |
 | `language` | language of the request | no | Body text and board conventions render in this language. Absent → the request's language. Proper nouns and researched names keep the spelling their source uses. |
 | `thread_input` | path or URL of an existing thread HTML | no | Source for the conversion run. May be a thread written by this skill or any external thread whose posts expose number, name field, ID, and body. |
@@ -85,8 +85,7 @@ listening script, the writing run also converts the thread it just wrote. Neithe
    genres invent their leaders fresh per story (see the leader formula in the style
    guide).
 8. **Length is the arc's outcome, not a target.** The hint adjusts how much drama there
-   is; the post count is what the drama needs. At delivery, the achieved scale and the
-   reasoning behind it are reported.
+   is; the post count is what the drama needs. Absent a hint, the ledger is exhausted — each harvested situation runs until the room has answered — and the observed yield is few-hundred posts by default (each situation handled in one-breath acts). At delivery, the achieved scale and the reasoning behind it are reported.
 9. **The room's knowledge moves at the room's pace.** Understanding arrives only through
    what the posters actually figure out — no narrator, no answers handed down before the
    evidence is in. Open questions stay open when they carry the thread; when a beat wants
@@ -164,23 +163,15 @@ and why they post; the habit decides how they're recognized. Named voices number
 the drama requires — some threads run on the OP plus the crowd — and the board-function
 roster in the style guide is a diagnostic for hearing blur, not a headcount to fill.
 
-### 4. Write sequentially (stable goal)
+### 4. Build the big picture and write in beats (stable goal)
 
-Write in order from post 1, one situation at a time: a situation rises, hits its turn,
-releases, then the next begins. Threads succeed the way beats succeed, not the way quotas
-fill. When a story must span several responses, stop at the end of a beat, state a
-continuation plan, and keep numbering continuous if the work continues — each batch
-opens its own complete beat so the whole is a series of full rises, never a stretched
-middle.
+Before drafting prose, draw the big picture — do not write posts sequentially before the outline exists:
 
-Length is the harvest, not a target: before drafting, list what the thread will run —
-the events the material itself carries, the points a person in the field would contest,
-the stake of each designed voice, and the stretches of the material's timeline — and
-report the list. Each situation runs until the room is out of replies about it — the
-reply unit is the one-breath act, and a beat is full when those acts have answered,
-argued, and left, not when narration filled it; it is cut only after it is exhausted (the
-sag fix applies then, not before). Bodies contain no anchor substrings; every inter-post reference names the content in words. The thread stops where the arc's need puts it; the run
-builds no ceiling and pads nothing.
+- Enumerate the ledger — the events the material carries, the points a person in the field would contest, the stake of each designed voice, and stretches of the timeline — and report it. Each ledger branch is expected to occupy its own beat: a situation rises, hits its turn, and releases. Threads succeed the way beats succeed, not quotas.
+- Turn the ledger into a beat sheet (`beats.json` — each beat has a goal and its voice mix). Validate the sheet before writing: `python3 scripts/validate_thread.py beats.json` — fix until it passes. This is the big-picture checkpoint; when the beat sheet is approved, the arc is reviewable before any post text is spent.
+- For the few-hundred default, do not write posts one by one in context. Generate all bodies as `posts.json` or `beats.json` and render the full HTML in one call: `python3 scripts/render_thread.py --input posts.json --template assets/viewer.html --output <agreed path> --validate`. For short threads where few-hundred is not needed, writing sequentially one beat at a time and keeping numbering continuous remains valid — each batch still opens a complete beat so the whole is a series of full rises, never a stretched middle. Parallel subagents may each take a beat range when generating large batches.
+
+Each beat runs until the room is out of replies about it — the reply unit is the one-breath act — and is cut only after it is exhausted (the sag fix applies then, not before). Bodies contain no anchor substrings; every inter-post reference names the content in words. The run builds no ceiling and pads nothing; large output is batched via the script so only the script's summary enters context.
 
 ### 5. Reader audit (stable goal — feedback loop)
 
@@ -213,10 +204,11 @@ should be visible in the reader's next pass, not just checked off.
 
 ### 6. Render (fragile sequence)
 
-This is the locked step because the HTML shape is the output contract: fill
-[assets/viewer.html](assets/viewer.html) — title in both slots; one post block per post,
-numbered in order, anonymous name fields left empty; body text with HTML special
-characters escaped. Bodies must contain no anchor substrings. Leave the styling untouched.
+This is the locked step because the HTML shape is the output contract. For any post count — including few-hundred — run the script in one call:
+
+`python3 scripts/render_thread.py --input posts.json --template assets/viewer.html --output <agreed path> --validate`
+
+The script fills [assets/viewer.html](assets/viewer.html) — title in both slots; one post block per post, numbered in order, anonymous name fields left empty; body text with HTML special characters escaped; bodies must contain no anchor substrings. Leave the styling untouched. Validate before executing (`python3 scripts/validate_thread.py posts.json`) and re-run until it passes; only the script's JSON summary enters context.
 
 ### 7. Convert to a TTS script (fragile sequence)
 
@@ -287,3 +279,5 @@ The contract runs through the writing itself: the opening post states the vivid 
 - [references/tts.md](references/tts.md) — conversion table: read before step 7 — the
   closed set of spoken forms and drop rules, each with its reason.
 - [assets/viewer.html](assets/viewer.html) — light-theme template; fill slots only.
+- [scripts/render_thread.py](scripts/render_thread.py) — bulk renderer: `posts.json` or `beats.json` → filled HTML in one call (executed, not read). Use for few-hundred defaults.
+- [scripts/validate_thread.py](scripts/validate_thread.py) — validator: checks body anchor zero, required fields, sequential numbering (executed).
